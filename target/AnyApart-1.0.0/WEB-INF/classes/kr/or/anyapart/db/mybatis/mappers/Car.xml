@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.anyapart.car.dao.CarDAO">
+	<!-- 전출자 등록시 기존에 등록된 차량 조회 by 이경륜 -->
+	<select id="selectCarListForMoveout" parameterType="kr.or.anyapart.maintenancecost.vo.CostVO" resultType="kr.or.anyapart.car.vo.CarVO">
+		SELECT *
+		  FROM CAR
+		 WHERE MEM_ID = #{memId} AND CAR_CODE = 'CR'
+	</select>
+</mapper>

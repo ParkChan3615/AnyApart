@@ -1,0 +1,236 @@
+﻿/*
+	VIEW NAME : CMNT_CODE 
+	커뮤니티 시설 코드
+	사용 법 SELECT * FROM CMNT_CODE 
+*/
+CREATE OR REPLACE VIEW CMNT_CODE AS
+SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'CMNT_CODE';
+
+--------------------------------------------------------
+/*
+	VIEW NAME : 'CAR_CODE';
+	차량 분류 코드
+	사용 법 SELECT * FROM 'CAR_CODE';
+*/
+CREATE OR REPLACE VIEW CAR_CODE AS
+SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'CAR_CODE';
+
+--------------------------------------------------------
+/*
+	VIEW NAME : SVC_CODE 
+	용역 업종 분류
+	사용 법 SELECT * FROM SVC_CODE 
+*/
+CREATE OR REPLACE VIEW SVC_CODE AS
+SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'SVC_CODE';
+
+--------------------------------------------------------
+/*
+	VIEW NAME : 'PROD_IO';
+	용역 업종 분류
+	사용 법 SELECT * FROM 'PROD_IO';
+*/
+CREATE OR REPLACE VIEW PROD_IO AS
+SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'PROD_IO';
+
+--------------------------------------------------------
+/*
+	VIEW NAME : PROD_CODE 
+	물품 분류
+	사용 법 SELECT * FROM PROD_CODE 
+*/
+CREATE OR REPLACE VIEW PROD_CODE AS
+SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'PROD_CODE';
+
+--------------------------------------------------------
+/*
+	VIEW NAME : AS_CODE 
+	수선 분류
+	사용 법 SELECT * FROM AS_CODE 
+*/
+CREATE OR REPLACE VIEW AS_CODE AS
+SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'AS_CODE';
+
+--------------------------------------------------------
+/*
+	VIEW NAME : MEM_ROLE 
+	사용자 권한 분류
+	사용 법 SELECT * FROM MEM_ROLE 
+*/
+CREATE OR REPLACE VIEW MEM_ROLE AS
+SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'MEM_ROLE';
+
+--------------------------------------------------------
+/*
+	VIEW NAME : BO_TYPE 
+	게시판 분류
+	사용 법 SELECT * FROM BO_TYPE 
+*/
+CREATE OR REPLACE VIEW BO_TYPE AS
+SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'BO_TYPE';
+
+--------------------------------------------------------
+/*
+	VIEW NAME : SCHD_TYPE 
+	일정 분류
+	사용 법 SELECT * FROM SCHD_TYPE 
+*/
+CREATE OR REPLACE VIEW SCHD_TYPE AS
+SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'SCHD_TYPE';
+
+--------------------------------------------------------
+/*
+	VIEW NAME : OFF_CODE 
+	휴가 분류
+	사용 법 SELECT * FROM OFF_CODE 
+*/
+CREATE OR REPLACE VIEW OFF_CODE AS
+SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'OFF_CODE';
+
+--------------------------------------------------------
+/*
+	VIEW NAME : RECEIPT_METHOD 
+	수납방법 분류
+	사용 법 SELECT * FROM RECEIPT_METHOD 
+*/
+CREATE OR REPLACE VIEW RECEIPT_METHOD AS
+SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'RECEIPT_METHOD';
+
+--------------------------------------------------------
+/*
+	VIEW NAME : APP_STATUS 
+	결재 상태 분류
+	사용 법 SELECT * FROM APP_STATUS 
+*/
+CREATE OR REPLACE VIEW APP_STATUS AS
+SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'APP_STATUS';
+
+--------------------------------------------------------
+/*
+	VIEW NAME : APP_STATUS 
+	단위업무 분류
+	사용 법 SELECT * FROM APP_STATUS 
+*/
+CREATE OR REPLACE VIEW TASK_CODE AS
+SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'TASK_CODE';
+
+--------------------------------------------------------
+/*
+	VIEW NAME : APP_CODE 
+	결재방법 분류
+	사용 법 SELECT * FROM APP_CODE 
+*/
+CREATE OR REPLACE VIEW APP_CODE AS
+SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'APP_CODE';
+
+--------------------------------------------------------
+/*
+	VIEW NAME : LIC_CODE 
+	자격증 분류
+	사용 법 SELECT * FROM LIC_CODE 
+*/
+CREATE OR REPLACE VIEW LIC_CODE AS
+SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'LIC_CODE';
+
+--------------------------------------------------------
+/*
+	VIEW NAME : ACCT_CODE 
+	계좌 분류 분류
+	사용 법 SELECT * FROM ACCT_CODE 
+*/
+CREATE OR REPLACE VIEW ACCT_CODE AS
+SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'ACCT_CODE';
+
+--------------------------------------------------------
+/*
+	VIEW NAME : APT_HEAT 
+	계좌 분류 분류
+	사용 법 SELECT * FROM APT_HEAT 
+*/
+CREATE OR REPLACE VIEW APT_HEAT AS
+SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'APT_HEAT';

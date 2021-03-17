@@ -1,0 +1,22 @@
+﻿/*
+	VIEW NAME : VQNA 
+	벤더 문의/답변 게시판
+	사용 법 SELECT * FROM VQNA 
+*/
+CREATE OR REPLACE VIEW VQNA AS
+SELECT 
+    BO_NO, BO_TYPE, BO_TITLE
+    , MEM_ID, BO_CONTENT, BO_DATE
+    , BO_HIT, BO_PARENT, BO_DEPTH
+    , BO_DELETE
+FROM BOARD A
+    JOIN (
+            SELECT CODE_ID, CODE, CODE_NAME
+            FROM COMMONCODE B
+            WHERE CODE = 'BO_TYPE'
+            AND CODE_ID LIKE 'VQNA_'
+        ) B
+    ON (A.BO_TYPE = B.CODE_ID)
+;
+
+--------------------------------------------------------

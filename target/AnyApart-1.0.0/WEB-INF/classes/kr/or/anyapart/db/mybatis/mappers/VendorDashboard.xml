@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.anyapart.vendorDashboard.dao.VendorDAO">
+
+<sql id="searchFrag">
+		<if test="searchVO!=null and @org.apache.commons.lang3.StringUtils@isNotBlank(searchVO.searchWord)">
+			<choose>
+				<when test="'aptName'.equals(searchVO.searchType)">
+					WHERE INSTR(APT_NAME, #{searchVO.searchWord}) > 0
+				</when>
+			</choose>
+		</if>
+</sql>
+
+
+
+<select id="selectApartCount" parameterType="kr.or.anyapart.vo.PagingVO" resultType="int">
+SELECT COUNT(*)
+        FROM APART
+</select>
+  
+  
+<select id="selectApartList" parameterType="kr.or.anyapart.vo.PagingVO" resultType="kr.or.anyapart.apart.vo.ApartVO">
+
+	SELECT B.*
+		FROM (
+			SELECT A.*, ROWNUM RNUM
+			FROM (
+					SELECT
+						APT_CODE,
+						APT_NAME,
+						APT_ZIP,
+						APT_ADD1,
+						APT_ADD2,
+						APT_CNT,
+						APT_IMG,
+						APT_DELETE,
+						APT_HEAT,
+						APT_TEL,
+						APT_HEAD,
+						TO_CHAR(APT_START, 'YYYY-MM-DD')APT_START,
+						TO_CHAR(APT_END, 'YYYY-MM-DD')APT_END,
+						APT_AREA
+					FROM  APART
+                    <include refid="searchFrag"/>
+                    ORDER BY APT_CODE ASC
+				) A
+			) B
+		<![CDATA[
+			WHERE RNUM >= #{startRow} AND RNUM <= #{endRow}
+		]]>
+</select>
+
+
+
+<select id="selectQnaTotalCount" parameterType="kr.or.anyapart.vendorDashboard.vo.DashboardVO" resultType="kr.or.anyapart.vendorDashboard.vo.DashboardVO">
+
+SELECT 
+    (
+        SELECT COUNT(*) 
+        FROM BOARD 
+        WHERE 
+        BO_TYPE LIKE 'VQNA%' 
+        AND BO_DEPTH = '1'
+        <if test="year != null">
+        AND TO_CHAR(BO_DATE,'YYYY') = ${year}
+        AND TO_CHAR(BO_DATE,'MM')=${monday}
+        </if>
+         <if test="aptCode != null">
+        AND BO_WRITER LIKE #{aptCode}||'%'
+        </if>
+		
+    ) AS QNA_TOTAL,
+    (
+        SELECT COUNT(*) 
+        FROM BOARD A LEFT OUTER JOIN BOARD B ON (A.BO_PARENT = B.BO_NO)
+        WHERE A.BO_TYPE LIKE 'VQNA%' 
+        AND A.BO_DEPTH='2' 
+         <if test="year != null">
+        AND TO_CHAR(B.BO_DATE,'YYYY') = ${year}
+        AND TO_CHAR(B.BO_DATE,'MM')=${monday}
+        </if>
+         <if test="aptCode != null">
+        AND B.BO_WRITER LIKE #{aptCode}||'%'
+        </if>
+        
+    )AS QNAREPLY_TOTAL,
+    
+    (
+        (
+            SELECT COUNT(*) 
+            FROM BOARD 
+            WHERE BO_TYPE LIKE 'VQNA%' 
+            AND BO_DEPTH = '1' 
+        <if test="year != null">
+        AND TO_CHAR(BO_DATE,'YYYY') = ${year}
+        AND TO_CHAR(BO_DATE,'MM')=${monday}
+        </if>
+         <if test="aptCode != null">
+        AND BO_WRITER LIKE #{aptCode}||'%'
+        </if>
+        )
+        -
+        (
+           SELECT COUNT(*) 
+        FROM BOARD A LEFT OUTER JOIN BOARD B ON (A.BO_PARENT = B.BO_NO)
+        WHERE A.BO_TYPE LIKE 'VQNA%' 
+        AND A.BO_DEPTH='2' 
+         <if test="year != null">
+        AND TO_CHAR(B.BO_DATE,'YYYY') = ${year}
+        AND TO_CHAR(B.BO_DATE,'MM')=${monday}
+        </if>
+         <if test="aptCode != null">
+        AND B.BO_WRITER LIKE #{aptCode}||'%'
+        </if>
+        )
+    ) AS NOT_QNAREPLY
+    
+FROM DUAL
+</select>
+
+
+<select id="selectYYYYList" parameterType="kr.or.anyapart.vendorDashboard.vo.DashboardVO" resultType="kr.or.anyapart.vendorDashboard.vo.DashboardVO">
+
+ SELECT DISTINCT 
+  	TO_CHAR(bo_date ,'YYYY')YEAR 
+
+  FROM BOARD 
+  WHERE BO_TYPE LIKE 'VQNA%' 
+  AND BO_DEPTH = '1'
+  <if test="aptCode != null">
+  AND BO_WRITER LIKE #{aptCode}||'%'
+  </if>
+    ORDER BY YEAR DESC
+  
+
+</select>
+
+<select id="selectMMList" parameterType="kr.or.anyapart.vendorDashboard.vo.DashboardVO" resultType="kr.or.anyapart.vendorDashboard.vo.DashboardVO">
+    SELECT DISTINCT 
+   TO_CHAR(BO_DATE ,'MM') MONDAY,
+   TO_CHAR(BO_DATE,'YYYY') YEAR
+  FROM BOARD 
+  WHERE
+   BO_TYPE LIKE 'VQNA%' 
+   AND BO_DEPTH = '1'
+   AND TO_CHAR(BO_DATE,'YYYY') =#{year} 
+   <if test="aptCode != null">
+  	AND BO_WRITER LIKE #{aptCode}||'%'
+  </if>
+   ORDER BY MONDAY DESC 
+   
+   
+</select>
+
+</mapper>

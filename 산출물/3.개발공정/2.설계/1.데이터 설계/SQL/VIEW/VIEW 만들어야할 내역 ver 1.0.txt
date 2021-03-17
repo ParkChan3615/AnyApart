@@ -1,0 +1,17 @@
+﻿1.  car 테이블 car_code 차량 구분
+2.  community 테이블 cmnt_code 커뮤니티 시설 분류
+얘는 일단 패스 계좌 테이블이 따로 있다. 3.  service 테이블 SVC_CODE, svc_bank 은행 코드
+4.  proddetail 테이블 prod_io 사용구매구분코드
+5.  prod 테이블 prod_code 물품분류코드
+6.  afterservice 테이블 as_code 수선 분류 코드
+7.  member 테이블 mem_role  사용자 분류
+8.  board 테이블 bo_type 게시판 분류코드
+9.  SCHEDULE 테이블 schd_type 일정 종류
+10. off 테이블 off_code 휴가 종류
+11. receipt 테이블 receipt_method 수납 방법
+12. approval 테이블 app_status 결재 상태 코드
+13. draft 테이블 task_code 단위업무 코드
+14. linedetail 테이블 app_code 결재 방법 코드
+15. license 테이블 lic_code 자격증 코드
+16. account 테이블 acct_code 계좌 분류코드
+17. apart 테이블 apt_heat 난방 정책 코드

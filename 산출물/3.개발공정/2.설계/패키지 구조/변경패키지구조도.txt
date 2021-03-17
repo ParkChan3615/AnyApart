@@ -1,0 +1,239 @@
+account(계좌)
+
+afterservice (수선신청, 입주민CRUD, 관리사무소 CRUD)
+ㄴcontroller
+　ㄴAfterServiceInsertController
+　ㄴAfterServiceUpdateController
+　ㄴAfterServiceDeleteController
+　ㄴAfterServiceRetrieveController (리스트, 상세)
+ㄴservice
+ㄴdao
+ㄴvo
+　ㄴAfterServiceVO
+
+apart (벤더 CRUD, 관리사무소 CRUD)
+ㄴcontroller
+　ㄴApartInsertController (벤더가 회원등록)
+　ㄴApartUpdateController (관리사무소가 단지 정보 수정)
+　ㄴApartDeleteController (계약만료시 벤더가 아파트 만료처리)
+　ㄴApartRetrieveController (리스트, 상세)
+ㄴdao
+ㄴservice
+ㄴvo
+　ㄴApartVO
+
+approval(전자결재)
+
+asset(물품관리)
+
+board(보드 묶은 패키지, 하위게시판패키지에서 파일, 리플은 알아서 만들것 // ★파일service도 다공통일거같은데 어쩌지??)
+ㄴfreeboard (입주민자게)
+　ㄴcontroller
+　　ㄴFreeboardInsertController
+　　ㄴFreeboardUpdateController
+　　ㄴFreeboardDeleteController
+　　ㄴFreeboardRetrieveController (리스트, 상세)
+　　ㄴFreeboardRetrieveController
+　ㄴservice
+　ㄴdao
+ㄴofficenotice (아파트<->입주민 공지)
+　ㄴcontroller
+　　ㄴOfficeNoticeInsertController
+　　ㄴOfficeNoticeUpdateController
+　　ㄴOfficeNoticeDeleteController
+　　ㄴOfficeNoticeRetrieveController (리스트, 상세)
+　ㄴservice
+　ㄴdao
+ㄴofficeqna (아파트<->입주민 문의)
+　ㄴcontroller
+　　ㄴOfficeQnaInsertController
+　　ㄴOfficeQnaUpdateController
+　　ㄴOfficeQnaDeleteController
+　　ㄴOfficeQnaRetrieveController (리스트, 상세)
+　ㄴservice
+　ㄴdao
+ㄴvendornotice (벤더<->아파트 공지)
+　ㄴcontroller
+　　ㄴVendorNoticeInsertController
+　　ㄴVendorNoticeUpdateController
+　　ㄴVendorNoticeDeleteController
+　　ㄴVendorNoticeRetrieveController (리스트, 상세)
+　ㄴservice
+　ㄴdao
+ㄴvendorqna(벤더<->아파트 문의)
+　ㄴcontroller
+　　ㄴVendorQnaInsertController
+　　ㄴVendorQnaUpdateController
+　　ㄴVendorQnaDeleteController
+　　ㄴVendorQnaRetrieveController (리스트, 상세)
+　ㄴservice
+　ㄴdao
+ㄴvo
+　ㄴBoardVO
+　ㄴBoardFormVO
+　ㄴReplyVO
+　ㄴAttachVO
+　ㄴCustomPaginationInfo
+
+calendar (아파트소식일정 / 애매한부분: 아파트행사 등록 메뉴를 만들지않는이상, 수선,세대신고에서 등록된 일정이 보이는 캘린더임)
+　ㄴcontroller
+　ㄴdao
+　ㄴservice
+　ㄴvo
+
+car(차량관리-입주민, 관리사무소)
+ㄴcontroller (컨트롤러 입주민/방문차량 분리하지않고 합쳐도될듯함, 담당자가정하세요)
+　ㄴResidentCarInsertController (입주민이 등록하는거나, 관리사무소에서 등록하는거나)
+　ㄴResidentCarUpdateController
+　ㄴResidentCarDeleteController
+　ㄴResidentCarRetrieveController (리스트, 상세)
+　ㄴVisitorCarInsertController
+　ㄴVisitorCarUpdateController
+　ㄴVisitorCarDeleteController
+　ㄴVisitorCarRetrieveController (리스트, 상세)
+　ㄴCarIOController (입출차 관련)
+ㄴservice
+ㄴdao
+ㄴvo
+　ㄴCarVO
+　ㄴCarIOVO
+　ㄴVisitVO
+
+commons (기존commons패키지)
+ㄴenum
+ㄴlistener
+ㄴsecurity
+ㄴvalidate
+ㄴwebsocket
+
+commonsweb (basevo랑, basecontroller 같은 애들 상의 필요함★★★★★★★★)
+ㄴadvice
+ㄴcontroller
+　ㄴ이밑에 index랑 login 패키지에 있던 컨트롤러 옮기기
+ㄴservice
+ㄴdao
+
+community (관리사무소가 커뮤니티시설관리 CRUD)
+ㄴcontroller
+　ㄴCommunityInsertController
+　ㄴCommunityUpdateController
+　ㄴCommunityDeleteController
+　ㄴCommunityRetrieveController (리스트, 상세)
+ㄴservice
+ㄴdao
+
+document(일반문서함)
+ㄴcontroller
+ㄴservice
+ㄴdao
+
+egovframework
+
+employee(인사관리)
+ㄴcontroller
+ㄴservice
+ㄴdao
+
+maintenancecost (관리비 부과, 관리사무소 CRUD, 입주민R)
+ㄴcontroller
+　ㄴCostInsertController
+　ㄴCostUpdateController
+　ㄴCostDeleteController
+　ㄴCostRetrieveController (리스트, 상세)
+ㄴservice
+ㄴdao
+ㄴvo
+　ㄴCostVO (관리비)
+
+meter (검침량 관리사무소 crud, 입주민 R, 기존이름 inspection 이었음)
+ㄴcontroller
+　ㄴMeterInsertController
+　ㄴMeterUpdateController
+　ㄴMeterDeleteController
+　ㄴMeterRetrieveController (리스트, 상세)
+ㄴservice
+ㄴdao
+ㄴvo
+　ㄴCommMeterVO (공동검침)
+　ㄴIndvMeterVO (개별검침)
+
+payment(급여,정산)
+ㄴcontroller
+ㄴservice
+ㄴdao
+ㄴvo
+
+receipt (관리비 수납, 관리사무소 R, 입주민CRUD(돈내는거) )
+ㄴcontroller
+　ㄴReceiptInsertController (수납)
+　ㄴReceiptUpdateController
+　ㄴReceiptDeleteController
+　ㄴReceiptRetrieveController (리스트, 상세)
+ㄴdao
+ㄴservice
+ㄴvo
+　ㄴReceiptVO (수납내역)
+
+remodelling (공사신고, 입주민CRUD, 관리사무소 CRUD)
+ㄴcontroller
+　ㄴRemodellingInsertController
+　ㄴRemodellingUpdateController
+　ㄴRemodellingDeleteController
+　ㄴRemodellingRetrieveController (리스트, 상세)
+ㄴservice
+ㄴdao
+ㄴvo
+　ㄴRemodellingVO
+
+reservation (입주민이 커뮤니티예약 CRUD, 관리사무소 커뮤니티예약CRUD)
+ㄴcontroller
+　ㄴReservationInsertController (예약등록)
+　ㄴReservationUpdateController (예약수정)
+　ㄴReservationDeleteController (예약취소)
+　ㄴReservationRetrieveController (리스트, 상세)
+ㄴservice
+ㄴdao
+ㄴvo
+　ㄴReservationVO
+
+resident (전입/전출)
+ㄴcontroller
+　ㄴResidentInsertController (관리사무소가 전입처리)
+　ㄴResidentUpdateController (관리사무소가 입주자정보변경)
+　ㄴResidentDeleteController (관리사무소가 전출처리)
+　ㄴResidentRetrieveController (리스트, 상세)
+ㄴdao
+ㄴservice
+ㄴvo
+　ㄴResidentVO
+
+servicecompany(용역업체관리)  -- service와 햇갈릴것같으면 컴퍼니추가해서 써
+ㄴcontroller
+　ㄴServiceInsertController 
+　ㄴServiceUpdateController 
+　ㄴServiceDeleteController 
+　ㄴServiceRetrieveController (리스트, 상세)
+ㄴdao
+ㄴservice
+ㄴvo
+　ㄴServiceVO
+　ㄴServiceContractVO (계약관련 패키지 서브로 파거나 기존 패키지 내에서 자유롭게 사용하세요)
+
+setting(★ 입주민이 입주민마이페이지에서 비번/닉네임변경하는거, 직원이 직원마이페이지에서 비번변경)
+ㄴcontroller
+ㄴdao
+ㄴservice
+
+vo (공통으로 쓸 vo)
+ㄴMemberVO
+ㄴSearchVO
+ㄴPagingVO
+ㄴ등등..
+
+
+
+
+
+
+
+

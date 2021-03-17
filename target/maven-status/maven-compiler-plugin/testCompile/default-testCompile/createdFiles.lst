@@ -1,0 +1,10 @@
+kr\or\anyapart\asset\buy\controller\BuyControllerTest.class
+kr\or\anyapart\commons\security\CustomAuthenticationSuccessHandlerTest.class
+kr\or\anyapart\commonsweb\dao\FareRateDAOTest.class
+kr\or\anyapart\CustomWebAppConfiguration.class
+kr\or\anyapart\commonsweb\controller\LoginControllerTest.class
+kr\or\anyapart\maintenancecost\dao\CostOfficeDAOTest.class
+kr\or\anyapart\remodeling\RemodlingListControllerTest.class
+kr\or\anyapart\resident\dao\ResidentDAOTest.class
+kr\or\anyapart\resident\service\ResidentServiceImplTest.class
+kr\or\anyapart\resident\controller\ResidentControllerTest.class

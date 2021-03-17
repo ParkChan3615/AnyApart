@@ -1,0 +1,103 @@
+엔터티명	테이블명	속성명	컬럼명	도메인	데이터타입	키	널허용	기본값	주석
+코드테이블	COMMONCODE	분류코드	CODE_ID	코드	VARCHAR2(15)	PK	Not Null		
+코드테이블	COMMONCODE	CODE	CODE	코드	VARCHAR2(15)	PFK	Not Null		
+코드테이블	COMMONCODE	분류코드명	CODE_NAME	이름	VARCHAR2(15)		Not Null		
+수납	RECEIPT	수납일련번호	RECEIPT_NO	순서	NUMBER(10)	PK	Not Null		
+수납	RECEIPT	관리비부과일련번호	COST_NO	순서	NUMBER(10)	FK	Not Null		
+수납	RECEIPT	수납방법코드	RECEIPT_METHOD	코드	VARCHAR2(15)		Not Null		
+수납	RECEIPT	수납금액	RECEIPT_COST	금액	NUMBER(20)		Not Null		
+수납	RECEIPT	수납일	RECEIPT_DATE	기본날짜	DATE		Not Null	sysdate	
+수납	RECEIPT	 수납여부	RECEIPT_YN	플래그	CHAR(1)				
+결재	APPROVAL	결재번호	APP_ID	순서	NUMBER(10)	PK	Not Null		
+결재	APPROVAL	기안문서번호	DRAFT_ID	순서	NUMBER(10)	FK	Not Null		
+결재	APPROVAL	결재선상세번호	APPLINEDE_ID	순서	NUMBER(10)	FK	Not Null		
+결재	APPROVAL	결재상태코드	APP_STATUS	코드	VARCHAR2(15)		Not Null		
+결재	APPROVAL	결재일자	APP_DATE	날짜	DATE		Not Null		
+결재	APPROVAL	수신여부	APP_YN	플래그	CHAR(1)		Not Null		
+결재선 상세	APRROVALLINEDETAIL	결재선상세번호	APPLINEDE_ID	순서	NUMBER(10)	PK	Not Null		
+결재선 상세	APRROVALLINEDETAIL	결재선번호	APPLINE_ID	순서	NUMBER(10)	FK	Not Null		
+결재선 상세	APRROVALLINEDETAIL	결재방법코드	APP_CODE	코드	VARCHAR2(15)		Not Null		
+결재선 상세	APRROVALLINEDETAIL	결재우선순서	APP_ORDER	순서	NUMBER(10)		Not Null		
+결재선 상세	APRROVALLINEDETAIL	사용자 코드	MEM_ID	코드	VARCHAR2(15)	FK	Not Null		
+기안문	DRAFT	기안문서번호	DRAFT_ID	순서	NUMBER(10)	PK	Not Null		
+기안문	DRAFT	단위업무코드	TASK_CODE	코드	VARCHAR2(15)		Not Null		
+기안문	DRAFT	결재선번호	APPLINE_ID	순서	NUMBER(10)	FK	Not Null		
+기안문	DRAFT	기안일자	DRAFT_DATE	기본날짜	DATE		Not Null	sysdate	
+기안문	DRAFT	제목	DRAFT_TITLE	긴이름	VARCHAR2(50 CHAR)		Not Null		
+기안문	DRAFT	첨부파일	DRAFT_FILE	첨부파일	BLOB		Not Null		
+기안문	DRAFT	삭제여부	DRAFT_DELETE	플래그	CHAR(1)		Not Null		
+기안문	DRAFT	사용자 코드	MEM_ID	코드	VARCHAR2(15)	FK	Not Null		
+결재선	APPROVALLINE	결재선번호	APPLINE_ID	순서	NUMBER(10)	PK	Not Null		
+결재선	APPROVALLINE	사용자 코드	MEM_ID	코드	VARCHAR2(15)	FK	Not Null		
+리플	REPLY	게시글 번호	BOARD_NO	순서	NUMBER(10)	FK	Not Null		
+리플	REPLY	사용자 코드	REP_WRITER	코드	VARCHAR2(15)	FK	Not Null		
+리플	REPLY	리플번호	REP_NO	순서	NUMBER(10)	PK	Not Null		
+리플	REPLY	리플내용	REP_CONTENT	장문	VARCHAR2(200 char)		Not Null		
+리플	REPLY	부모리플	REP_PARENT	순서	NUMBER(10)		Not Null		
+리플	REPLY	계층레벨	REP_DEPTH	숫자	NUMBER(4)		Not Null		
+리플	REPLY	등록 일자	REP_DATE	기본날짜	DATE		Not Null	sysdate	
+게시판	BOARD	게시글 번호	BO_NO	순서	NUMBER(10)	PK	Not Null		
+게시판	BOARD	게시판 분류 코드	BO_TYPE	코드	VARCHAR2(15)		Not Null		
+게시판	BOARD	글 제목	BO_TITLE	긴이름	VARCHAR2(50 CHAR)		Not Null		
+게시판	BOARD	사용자 코드	MEM_ID	코드	VARCHAR2(15)	FK	Not Null		
+게시판	BOARD	내용	BO_CONTENT	내용	CLOB		Not Null		
+게시판	BOARD	작성일	BO_DATE	기본날짜	DATE		Not Null	sysdate	
+게시판	BOARD	조회수	BO_HIT	수량	NUMBER(5)		Not Null		
+게시판	BOARD	부모글	BO_PARNET	순서	NUMBER(10)		Not Null		
+게시판	BOARD	계층 레벨	BO_DEPTH	숫자	NUMBER(4)		Not Null		
+게시판	BOARD	삭제여부	BO_DELETE	플래그	CHAR(1)		Not Null		
+파일	ATTACH	게시글 번호	BO_NO	순서	NUMBER(10)	PFK	Not Null		
+파일	ATTACH	파일순번	ATT_SN	순서	NUMBER(10)	PK	Not Null		
+파일	ATTACH	파일저장명	ATT_SAVENAME	파일저장명	VARCHAR2(50)		Not Null		
+파일	ATTACH	파일원본명	ATT_FILENAME	파일저장명	VARCHAR2(50)		Not Null		
+파일	ATTACH	파일크기	ATT_FILESIZE	파일크기	NUMBER(10)		Not Null		
+파일	ATTACH	파일확장자	ATT_MIME	이름	VARCHAR2(15)		Not Null		
+파일	ATTACH	파일팬시크기	ATT_FANCY	이름	VARCHAR2(15)				
+공사 신고	REMODELLING	공사신고글번호	RMDL_NO	순서	NUMBER(10)	PK	Not Null		
+공사 신고	REMODELLING	확인여부	RMDL_YN	플래그	CHAR(1)		Not Null		
+공사 신고	REMODELLING	제목	RMDL_TITLE	긴이름	VARCHAR2(50 CHAR)		Not Null		
+공사 신고	REMODELLING	내용	RMDL_CONTENT	내용	CLOB		Not Null		
+공사 신고	REMODELLING	시작일	RMDL_START	기본날짜	DATE		Not Null	sysdate	
+공사 신고	REMODELLING	종료일	RMDL_END	날짜	DATE		Not Null		
+공사 신고	REMODELLING	사용자 코드	MEM_ID	코드	VARCHAR2(15)	FK	Not Null		
+일정	SCHEDULE	일정번호	SCHD_NO	순서	NUMBER(10)	PK	Not Null		
+일정	SCHEDULE	일정종류	SCHD_TYPE	코드	VARCHAR2(15)		Not Null		
+일정	SCHEDULE	일정제목	SCHD_TITLE	긴이름	VARCHAR2(50 CHAR)				
+일정	SCHEDULE	일정내용	SCHD_CONTENT	단문	VARCHAR2(50 char)				
+일정	SCHEDULE	시작일	SCHD_START	기본날짜	DATE		Not Null	sysdate	
+일정	SCHEDULE	종료일	SCHD_END	기본날짜	DATE		Not Null	sysdate	
+일정	SCHEDULE	아파트코드	APT_CODE	아파트코드	VARCHAR2(5)	FK			
+수선신청	AFTERSERVICE	수선신청글번호	AS_NO	순서	NUMBER(10)	PK	Not Null		
+수선신청	AFTERSERVICE	수선분류코드	AS_CODE	코드	VARCHAR2(15)		Not Null		
+수선신청	AFTERSERVICE	접수상태코드	AS_STATUS	코드	VARCHAR2(15)		Not Null		
+수선신청	AFTERSERVICE	사용자 코드	MEM_ID	코드	VARCHAR2(15)	FK	Not Null		
+수선신청	AFTERSERVICE	제목	AS_TITLE	긴이름	VARCHAR2(50 CHAR)		Not Null		
+수선신청	AFTERSERVICE	내용	AS_CONTENT	내용	CLOB		Not Null		
+푸시알림	PUSH	푸시알림번호	PUSH_NO	순서	NUMBER(10)	PK	Not Null		
+푸시알림	PUSH	받는사람	PUSH_TO	코드	VARCHAR2(15)		Not Null		
+푸시알림	PUSH	푸시내용	PUSH_CONTENT	단문	VARCHAR2(50 char)		Not Null		
+푸시알림	PUSH	일자	PUSH_DATE	기본날짜	DATE		Not Null	sysdate	
+푸시알림	PUSH	확인여부	PUSH_YN	플래그	CHAR(1)		Not Null		
+공통코드명	CODENAME	CODE	CODE	코드	VARCHAR2(15)	PK	Not Null		
+용역계약내역	SERVICECONTRACT	용역업체ID	SVC_ID	코드	VARCHAR2(15)	PFK	Not Null		
+용역계약내역	SERVICECONTRACT	계약시작일	SVC_START	날짜	DATE	PK	Not Null		
+용역계약내역	SERVICECONTRACT	계약만료일	SVC_END	날짜	DATE	PK	Not Null		
+용역계약내역	SERVICECONTRACT	계약금	SVC_DEPOSIT	금액	NUMBER(20)		Not Null		
+용역계약내역	SERVICECONTRACT	아파트코드	APT_CODE	아파트코드	VARCHAR2(5)	FK	Not Null		
+사용자	MEMBER	사용자 코드	MEM_ID	코드	VARCHAR2(15)	PK	Not Null		
+사용자	MEMBER	사용자비밀번호	MEM_PASS	비밀번호	VARCHAR2(200)		Not Null		
+사용자	MEMBER	사용자분류	MEM_ROLE	코드	VARCHAR2(15)		Not Null		
+사용자	MEMBER	회원탈퇴여부	MEM_DELETE	플래그	CHAR(1)		Not Null		
+용역파일게시판	SERVICEFILE	용역파일번호	SVC_FILE_NO	순서	NUMBER(10)	PK	Not Null		
+용역파일게시판	SERVICEFILE	용역업체ID	SVC_ID	코드	VARCHAR2(15)	FK	Not Null		
+용역파일게시판	SERVICEFILE	제목	SVC_TITLE	긴이름	VARCHAR2(50 CHAR)		Not Null		
+용역파일게시판	SERVICEFILE	원본파일명	SVC_FILENAME	파일저장명	VARCHAR2(50)		Not Null		
+용역파일게시판	SERVICEFILE	첨부파일	SVC_FILE	첨부파일	BLOB		Not Null		
+용역파일게시판	SERVICEFILE	파일등록일	SVC_DATE	기본날짜	DATE		Not Null	sysdate	
+용역파일게시판	SERVICEFILE	파일확장자명	SVC_MIME	이름	VARCHAR2(15)		Not Null		
+용역파일게시판	SERVICEFILE	파일크기	SVC_FILESIZE	파일크기	NUMBER(10)		Not Null		
+용역파일게시판	SERVICEFILE	파일팬시크기	SVC_FANCY	이름	VARCHAR2(15)				
+계산/비율	FARERATE	가격/비율ID	FR_ID	코드	VARCHAR2(15)	PK	Not Null		
+계산/비율	FARERATE	가격/비율값	FR	계산	"NUMBER(10,3)"		Not Null		
+계산/비율	FARERATE	가격/비율설명	FR_CONTENT	단문	VARCHAR2(50 char)		Not Null		
+계산/비율	FARERATE	계산방법	FR_HOWTO	장문	VARCHAR2(200 char)				

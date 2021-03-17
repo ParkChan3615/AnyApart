@@ -1,0 +1,45 @@
+============================openCV 설치 ================================
+@1.opencv package 
+	1-1. sudo apt-get install build-essential cmake 
+	1-2. sudo apt-get install libjpeg-dev libtiff5-dev libpng12-dev
+	1-3. sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libxvidcore-dev libx264-dev libxine2-dev
+	(3관련 된 것 따로 설치 도가능!)
+	 sudo apt-get install libavcodec-dev
+	 sudo apt-get install libavformat-dev
+	 sudo apt-get install libswscale-dev
+	 sudo apt-get install libxvidcore-dev
+	 sudo apt-get install libx264-dev
+	 sudo apt-get install libxine2-dev
+	1-4  sudo apt-get install libv4l-dev v4l-utils
+	1-5  sudo apt-get install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
+            1-6  sudo apt-get install libgtk2.0-dev
+@2.openGL 라이브러리 설치
+	2-1 sudo apt-get install mesa-utils libgl1-mesa-dri libgtkgl2.0-dev libgtkglext1-dev
+	2-2sudo apt-get install libatlas-base-dev gfortran libeigen3-dev
+	2-3 sudo apt-get install python3.0-dev python3-numpy
+## 파이썬 버전마다 다르니 나중에 해보고 싶으면 버전 맞추서 다운하기 우리는 3.0 사용함##
+
+=====================================================================
+
+============================tesseract 설치 ===============================
+@1. 패키지 설정
+	1-1sudo apt-get install autoconf automake libtool libpng12-dev libtiff5-dev zlib1g-dev libicu-dev libpango1.0-dev libcairo2-dev
+	1-2sudo apt-get install libjpeg62-turbo-dev
+	1-3wget https://github.com/tesseract-ocr/tesseract/archive/3.04.01.tar.gz
+	1-4tar -xvzf 3.04.01.tar.gz
+
+@2.한글언어 받기(한글인식을 위해서 필요합니다.)
+	https://github.com/tesseract-ocr/tesseract/wiki/Data-Files#data-files-for-version-304305
+## 라즈베리파이 /usr/local/share/tessdata  들어가서 OCR 안에 KO.한글번역.파일 집어 넣기!
+
+@3.pytesseract 설치
+	3-1.sudo mv 파일명 /usr/local/share/tessdata
+	3-2.sudo pip install pytesseract
+
+
+============설치 할 때 참고 사이트 ========================
+1.opencv 설치
+http://www.3demp.com/community/boardDetails.php?cbID=235
+
+2.tesseract 설치.
+https://emaru.tistory.com/16

@@ -1,0 +1,441 @@
+﻿/*
+	VIEW NAME : V_CAR
+	CAR 테이블 JOIN COMMONCODE
+	--
+	사용 법 SELECT * FROM V_CAR;
+*/
+CREATE OR REPLACE VIEW V_CAR AS
+SELECT
+    a.car_no,
+    a.mem_id,
+    b.code_name,
+    a.car_type
+FROM car A
+JOIN (SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'CAR_CODE') B 
+ON A.CAR_CODE = B.CODE_ID;
+
+---------------------------------------------------------------
+/*
+	VIEW NAME : V_COMMUNITY
+	community 테이블 JOIN COMMONCODE
+	--
+	사용 법 SELECT * FROM V_COMMUNITY
+*/
+CREATE OR REPLACE VIEW V_COMMUNITY AS
+SELECT
+    cmnt_no,
+    b.code_name,
+    cmnt_name,
+    cmnt_size,
+    cmnt_capa,
+    cmnt_limit,
+    cmnt_open,
+    cmnt_close,
+    cmnt_desc,
+    apt_code
+FROM
+    community A
+JOIN (SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'CMNT_CODE') B 
+ON A.CMNT_CODE = B.CODE_ID;
+
+-----------------------------------------------------
+/*
+	VIEW NAME : V_PRODDETAIL
+	PRODDETAIL테이블 JOIN COMMONCODE
+	--
+	사용 법 SELECT * FROM V_PRODDETAIL
+*/
+CREATE OR REPLACE VIEW V_PRODDETAIL AS
+SELECT
+    prod_id,
+    prod_io_date,
+    prod_io_qty,
+    CODE_NAME
+FROM
+    PRODDETAIL A
+JOIN (SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'PROD_IO') B 
+ON A.PROD_IO = B.CODE_ID;
+
+----------------------------------------------------------------
+/*
+	VIEW NAME : V_PROD
+	prod 테이블 JOIN COMMONCODE
+	--
+	사용 법 SELECT * FROM V_PROD
+*/
+CREATE OR REPLACE VIEW V_PROD AS
+SELECT
+    prod_id,
+    CODE_NAME,
+    prod_name,
+    prod_price,
+    prod_company,
+    prod_qty,
+    apt_code
+FROM
+    prod A
+JOIN (SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'PROD_CODE') B 
+ON A.PROD_CODE = B.CODE_ID;
+
+------------------------------------------------------------
+/*
+	VIEW NAME : V_AFTERSERVICE
+	AFTERSERVICE테이블 JOIN COMMONCODE
+	--
+	사용 법 SELECT * FROM V_AFTERSERVICE
+*/
+CREATE OR REPLACE VIEW V_AFTERSERVICE AS
+SELECT
+    as_no,
+    CODE_NAME,
+    as_status,
+    mem_id,
+    as_title,
+    as_content,
+    as_date
+FROM
+    AFTERSERVICE A
+JOIN (SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'AS_CODE') B 
+ON A.AS_CODE = B.CODE_ID;
+
+-------------------------------------------------------
+/*
+	VIEW NAME : V_MEMBER
+	MEMBER 테이블 JOIN COMMONCODE
+	--
+	사용 법 SELECT * FROM V_MEMBER
+*/
+CREATE OR REPLACE VIEW V_MEMBER AS
+SELECT
+    mem_id,
+    mem_nick,
+    mem_pass,
+    CODE_NAME,
+    mem_delete
+FROM
+    MEMBER A
+JOIN (SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'MEM_ROLE') B 
+ON A.MEM_ROLE = B.CODE_ID;
+
+-------------------------------------------------------
+/*
+	VIEW NAME : V_BOARD
+	BOARD 테이블 JOIN COMMONCODE
+	--
+	사용 법 SELECT * FROM V_BOARD
+*/
+CREATE OR REPLACE VIEW V_BOARD AS
+SELECT
+    bo_no,
+    CODE_NAME,
+    bo_title,
+    mem_id,
+    bo_content,
+    bo_date,
+    bo_hit,
+    bo_parent,
+    bo_depth,
+    bo_delete
+FROM 
+    BOARD A
+JOIN (SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'BO_TYPE') B 
+ON A.BO_TYPE = B.CODE_ID;
+
+---------------------------------------------------------------
+/*
+	VIEW NAME : V_SCHEDULE 
+	SCHEDULE  테이블 JOIN COMMONCODE
+	--
+	사용 법 SELECT * FROM V_SCHEDULE 
+*/
+CREATE OR REPLACE VIEW V_SCHEDULE AS
+SELECT
+    schd_no,
+    CODE_NAME,
+    schd_title,
+    schd_content,
+    schd_start,
+    schd_end,
+    apt_code
+FROM
+    SCHEDULE A
+JOIN (SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'SCHD_TYPE') B 
+ON A.SCHD_TYPE = B.CODE_ID;
+
+---------------------------------------------------------------
+/*
+	VIEW NAME : V_OFF 
+	OFF 테이블 JOIN COMMONCODE
+	--
+	사용 법 SELECT * FROM V_OFF 
+*/
+CREATE OR REPLACE VIEW V_OFF AS
+SELECT
+    off_no,
+    CODE_NAME,
+    off_content,
+    off_start,
+    off_end,
+    mem_id
+FROM
+    OFF A
+JOIN (SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'OFF_CODE') B 
+ON A.OFF_CODE = B.CODE_ID;
+---------------------------------------------------------------
+/*
+	VIEW NAME : V_RECEIPT 
+	RECEIPT 테이블 JOIN COMMONCODE
+	--
+	사용 법 SELECT * FROM V_RECEIPT 
+*/
+CREATE OR REPLACE VIEW V_RECEIPT AS
+SELECT
+    receipt_no,
+    cost_no,
+    CODE_NAME,
+    receipt_cost,
+    receipt_date,
+    receipt_yn
+FROM
+    RECEIPT A
+JOIN (SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'RECEIPT_METHOD') B 
+ON A.RECEIPT_METHOD = B.CODE_ID;
+
+---------------------------------------------------------------
+/*
+	VIEW NAME : V_APPROVAL 
+	APPROVAL 테이블 JOIN COMMONCODE
+	--
+	사용 법 SELECT * FROM V_APPROVAL 
+*/
+CREATE OR REPLACE VIEW V_APPROVAL AS
+SELECT
+    app_id,
+    draft_id,
+    applinede_id,
+    CODE_NAME,
+    app_date,
+    app_yn
+FROM 
+    APPROVAL A
+JOIN (SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'APP_STATUS') B 
+ON A.APP_STATUS = B.CODE_ID;
+
+---------------------------------------------------------------
+/*
+	VIEW NAME : V_DRAFT 
+	DRAFT 테이블 JOIN COMMONCODE
+	--
+	사용 법 SELECT * FROM V_DRAFT 
+*/
+CREATE OR REPLACE VIEW V_DRAFT AS
+SELECT
+    draft_id,
+    CODE_NAME,
+    appline_id,
+    draft_date,
+    draft_title,
+    draft_delete,
+    mem_id
+FROM 
+    DRAFT A
+JOIN (SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'TASK_CODE') B 
+ON A.TASK_CODE = B.CODE_ID;
+
+---------------------------------------------------------------
+/*
+	VIEW NAME : V_LINEDETAIL 
+	LINEDETAIL 테이블 JOIN COMMONCODE
+	--
+	사용 법 SELECT * FROM V_LINEDETAIL 
+*/
+CREATE OR REPLACE VIEW V_LINEDETAIL AS
+SELECT
+    applinede_id,
+    appline_id,
+    CODE_NAME,
+    app_order,
+    mem_id
+FROM
+    LINEDETAIL A
+JOIN (SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'APP_CODE') B 
+ON A.APP_CODE = B.CODE_ID;
+
+---------------------------------------------------------------
+/*
+	VIEW NAME : V_LICENSE 
+	LICENSE 테이블 JOIN COMMONCODE
+	--
+	사용 법 SELECT * FROM V_LICENSE 
+*/
+CREATE OR REPLACE VIEW V_LICENSE AS
+SELECT
+    lic_no,
+    CODE_NAME,
+    lic_date,
+    lic_img,
+    mem_id
+FROM
+    LICENSE A
+JOIN (SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'LIC_CODE') B 
+ON A.LIC_CODE = B.CODE_ID;
+
+---------------------------------------------------------------
+/*
+	VIEW NAME : V_ACCOUNT 
+	ACCOUNT 테이블 JOIN COMMONCODE
+	--
+	사용 법 SELECT * FROM V_ACCOUNT 
+*/
+CREATE OR REPLACE VIEW V_ACCOUNT AS
+SELECT
+    acct_id,
+    bank_code,
+    acct_no,
+    CODE_NAME
+FROM
+    ACCOUNT A
+JOIN (SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'ACCT_CODE') B 
+ON A.ACCT_CODE = B.CODE_ID;
+
+---------------------------------------------------------------
+/*
+	VIEW NAME : V_APART 
+	APART 테이블 JOIN COMMONCODE
+	--
+	사용 법 SELECT * FROM V_APART 
+*/
+CREATE OR REPLACE VIEW V_APART AS
+SELECT
+    apt_code,
+    apt_name,
+    apt_zip,
+    apt_add1,
+    apt_add2,
+    apt_cnt,
+    apt_img,
+    apt_delete,
+    CODE_NAME,
+    apt_tel,
+    apt_head,
+    apt_start,
+    apt_end,
+    apt_area
+FROM
+    APART A
+JOIN (SELECT 
+    CODE_ID,
+    CODE,
+    CODE_NAME
+FROM COMMONCODE
+WHERE CODE = 'APT_HEAT') B 
+ON A.APT_HEAT = B.CODE_ID;
+
+---------------------------------------------------------------
+/*
+	VIEW NAME : V_SERVICE 
+	SERVICE 테이블 JOIN COMMONCODE
+		        JOIN BANK
+	--
+	사용 법 SELECT * FROM V_SERVICE 
+*/
+CREATE OR REPLACE VIEW V_SERVICE AS
+SELECT
+    svc_id,
+    apt_code,
+    CODE_NAME,
+    svc_name,
+    svc_zip,
+    svc_add1,
+    svc_add2,
+    svc_tel,
+    svc_head,
+    svc_head_tel,
+    BANK_NAME,
+    svc_acct
+FROM
+    SERVICE A
+    JOIN (SELECT 
+        CODE_ID,
+        CODE,
+        CODE_NAME
+        FROM COMMONCODE
+        WHERE CODE = 'SVC_CODE') B 
+    ON A.SVC_CODE = B.CODE_ID
+    JOIN BANK C
+    ON A.SVC_BANK = C.BANK_CODE;

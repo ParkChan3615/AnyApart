@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.anyapart.board.vendorqna.dao.IOptionDAO">
+
+	<select id="retrieveQnaOption" resultType="kr.or.anyapart.vo.CodeVO">
+		SELECT
+	    	CODE_ID,
+		    CODE,
+		    CODE_NAME
+		FROM
+		    COMMONCODE
+		WHERE INSTR(CODE_ID, 'VQNA') > 0
+	</select>
+
+	<select id="retrieveApartOption" resultType="kr.or.anyapart.vo.CodeVO">
+		SELECT
+	    	CODE_ID,
+		    CODE,
+		    CODE_NAME
+		FROM
+		    COMMONCODE
+		WHERE INSTR(CODE, 'APT_HEAT') > 0
+	</select>
+	
+	<select id="retrieveProdOption" resultType="kr.or.anyapart.vo.CodeVO">
+		SELECT
+	    	CODE_ID,
+		    CODE,
+		    CODE_NAME
+		FROM
+		    COMMONCODE
+		WHERE INSTR(CODE, 'PROD_CODE') > 0
+	</select>
+	
+	<select id="retrieveCommunityOption" resultType="kr.or.anyapart.vo.CodeVO">
+		SELECT
+	    	CODE_ID,
+		    CODE,
+		    CODE_NAME
+		FROM
+		    COMMONCODE
+		WHERE INSTR(CODE, 'CMNT_CODE') > 0
+	</select>
+	
+	<select id="retrieveProdId" parameterType="kr.or.anyapart.vo.MemberVO" resultType="kr.or.anyapart.asset.vo.ProdVO">
+		SELECT 
+		    PROD_ID,
+		    PROD_CODE,
+		    PROD_NAME
+		FROM PROD
+		WHERE APT_CODE= #{aptCode}
+	</select>
+</mapper>

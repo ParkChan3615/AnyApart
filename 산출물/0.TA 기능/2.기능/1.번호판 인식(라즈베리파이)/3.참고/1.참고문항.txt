@@ -1,0 +1,12 @@
+1.동영상 실시간 스트리밍
+참고 :https://bluexmas.tistory.com/826
+
+라즈베리파이 셋팅
+https://medium.com/@keysoodev/raspberry-pi-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC-%ED%8C%8C%EC%9D%B4-%EC%B4%88%EA%B8%B0-%EC%84%B8%ED%8C%85%ED%95%98%EA%B8%B0-d766009af8b1
+
+3.번호판 인식 예제 소스 깃
+https://github.com/kairess/license_plate_recognition
+
+4.번호판 인식 result 한글로 변환 파일
+https://github.com/tesseract-ocr/tessdata/blob/master/kor.traineddata
+
